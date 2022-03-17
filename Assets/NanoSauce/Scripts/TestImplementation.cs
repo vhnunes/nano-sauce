@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Facebook.Unity;
 using GameAnalyticsSDK;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace com.vhndev.nanosauce
         private void Start()
         {
             InitializeGA();
+            InitialzieFB();
         }
 
         private void InitializeGA()
@@ -24,6 +26,31 @@ namespace com.vhndev.nanosauce
             }
         }
 
+        private void InitialzieFB()
+        {
+            if (!FB.IsInitialized) {
+                // Initialize the Facebook SDK
+                FB.Init(InitCallback, OnHideUnity);
+            } else {
+                // Already initialized, signal an app activation App Event
+                FB.ActivateApp();
+            }
+        }
+
+        #region FB Methods
+
+        private void OnHideUnity(bool isunityshown)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void InitCallback()
+        {
+            FB.ActivateApp();
+        }
+
+        #endregion
+        
         #region IGameAnalyticsAttListener Methods
 
         public void GameAnalyticsATTListenerNotDetermined()
