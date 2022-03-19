@@ -1,0 +1,20 @@
+{
+    "name": "NanoSauceEditorAssembly",
+    "rootNamespace": "",
+    "references": [
+        "GUID:ab512a5936fb34e4385f619f28f8a3a0",
+        "GUID:343deaaf83e0cee4ca978e7df0b80d21",
+        "GUID:0acc523941302664db1f4e527237feb3"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
