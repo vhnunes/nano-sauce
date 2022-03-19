@@ -37,35 +37,10 @@ namespace com.vhndev.nanosauce.setup.editor
         public static void ApplySetup()
         {
             var data = GetData;
-            ApplyFB(data);
-            ApplyGA(data);
+            NanoSauceFBSetup.ApplyFromData(data);
+            NanoSauceGASetup.ApplyFromData(data);
             
             EditorUtility.DisplayDialog("Sucess", "Settings changed", "OK");
-        }
-
-        private static void ApplyFB(NanoSauceSetupData data)
-        {
-            Facebook.Unity.Settings.FacebookSettings.AppIds = new List<string>()
-            {
-                data.fbAppId
-            };
-            
-            EditorUtility.SetDirty(Facebook.Unity.Settings.FacebookSettings.Instance);
-            AssetDatabase.SaveAssetIfDirty(Facebook.Unity.Settings.FacebookSettings.Instance);
-            Facebook.Unity.Editor.ManifestMod.GenerateManifest();
-        }
-
-        private static void ApplyGA(NanoSauceSetupData data)
-        {
-            GameAnalyticsSDK.GameAnalytics.SettingsGA.Platforms.Clear();
-            
-            GameAnalyticsSDK.GameAnalytics.SettingsGA.AddPlatform(RuntimePlatform.Android);
-            GameAnalyticsSDK.GameAnalytics.SettingsGA.UpdateGameKey(0, data.gaAndroidGameKey);
-            GameAnalyticsSDK.GameAnalytics.SettingsGA.UpdateSecretKey(0, data.gaAndroidSecretKey);
-
-            GameAnalyticsSDK.GameAnalytics.SettingsGA.AddPlatform(RuntimePlatform.IPhonePlayer);
-            GameAnalyticsSDK.GameAnalytics.SettingsGA.UpdateGameKey(1, data.gaIosGameKey);
-            GameAnalyticsSDK.GameAnalytics.SettingsGA.UpdateSecretKey(1, data.gaIosSecretKey);
         }
     }
 }
