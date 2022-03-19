@@ -4,25 +4,32 @@ namespace com.vhndev.nanosauce
 {
     public static class NanoSauceAnalytics
     {
-        private static NanoSauceFacebook nanoFB;
-        private static NanoSauceGameAnalytics nanoGA;
+        private static NanoSauceFB nanoFB;
+        private static NanoSauceGA nanoGA;
+
+        private static int currentLevelRegistered = 1;
+        private const string LEVEL_REGISTER_KEY = "LEVEL_PROGRESS";
 
         [RuntimeInitializeOnLoadMethod]
         private static void Initialize()
         {
-            nanoGA = new NanoSauceGameAnalytics();
-            nanoFB = new NanoSauceFacebook();
+            nanoGA = new NanoSauceGA();
+            nanoFB = new NanoSauceFB();
             
             nanoGA.Initialize();
             nanoFB.Initialize();
+            
+            LoadLevelProgress();
         }
+
+        #region Game Progress Register
 
         /// <summary>
         /// Call when start the game level.
         /// </summary>
         public static void RegisterGameStart()
         {
-            nanoGA.RegisterLevelStart("level_000");
+            nanoGA.RegisterLevelStart(GetCurrentLevelString());
         }
 
         /// <summary>
@@ -30,7 +37,8 @@ namespace com.vhndev.nanosauce
         /// </summary>
         public static void RegisterGameWin()
         {
-            nanoGA.RegisterLevelEnd("level_000");
+            nanoGA.RegisterLevelEnd(GetCurrentLevelString());
+            CompleteLevelProgress();
         }
 
         /// <summary>
@@ -38,7 +46,36 @@ namespace com.vhndev.nanosauce
         /// </summary>
         public static void RegisterGameLose()
         {
-            nanoGA.RegisterLevelLose("level_000");
+            nanoGA.RegisterLevelLose(GetCurrentLevelString());
         }
+
+        #endregion
+
+        #region Level Progress Automation
+
+        private static void LoadLevelProgress()
+        {
+            if (PlayerPrefs.HasKey(LEVEL_REGISTER_KEY))
+                currentLevelRegistered = PlayerPrefs.GetInt(LEVEL_REGISTER_KEY);
+        }
+
+        private static void SaveLevelProgress()
+        {
+            PlayerPrefs.SetInt(LEVEL_REGISTER_KEY, currentLevelRegistered);
+        }
+        
+        private static void CompleteLevelProgress()
+        {
+            currentLevelRegistered++;
+            SaveLevelProgress();
+        }
+        
+        private static string GetCurrentLevelString()
+        {
+            return "level_" + currentLevelRegistered.ToString("000");
+        }
+
+        #endregion
+
     }
 }
