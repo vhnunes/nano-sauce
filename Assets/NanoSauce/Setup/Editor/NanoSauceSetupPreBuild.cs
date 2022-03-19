@@ -1,12 +1,13 @@
 ﻿using UnityEditor;
 using UnityEditor.Build;
+using UnityEditor.Build.Reporting;
 
 namespace com.vhndev.nanosauce.setup.editor
 {
-    internal class NanoSauceSetupPreBuild : IPreprocessBuild
+    internal class NanoSauceSetupPreBuild : IPreprocessBuildWithReport
     {
         public int callbackOrder { get; }
-        public void OnPreprocessBuild(BuildTarget target, string path)
+        public void OnPreprocessBuild(BuildReport report)
         {
             CheckBuildExceptions();
         }

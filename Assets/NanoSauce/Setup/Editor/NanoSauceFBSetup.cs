@@ -33,10 +33,12 @@ namespace com.vhndev.nanosauce.setup.editor
 
         public static void CheckBuildExceptions()
         {
-            if (string.IsNullOrEmpty(FB.AppId))
+            var data = NanoSauceSetup.GetData;
+            
+            if (string.IsNullOrEmpty(data.fbAppId))
                 throw new BuildFailedException("NanoSauce: No FB AppID specified...");
             
-            if (FB.AppId.Contains(" "))
+            if (data.fbAppId.Contains(" "))
                 throw new BuildFailedException("NanoSauce: Withespace detected at FB AppID...");
         }
     }
