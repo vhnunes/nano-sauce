@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEditor;
 
 namespace com.vhndev.nanosauce.setup.editor
@@ -7,6 +8,8 @@ namespace com.vhndev.nanosauce.setup.editor
     {
         public static void ApplyFromData(NanoSauceSetupData data)
         {
+            CheckExeptions(data);
+            
             Facebook.Unity.Settings.FacebookSettings.AppIds = new List<string>()
             {
                 data.fbAppId
@@ -15,6 +18,15 @@ namespace com.vhndev.nanosauce.setup.editor
             EditorUtility.SetDirty(Facebook.Unity.Settings.FacebookSettings.Instance);
             AssetDatabase.SaveAssetIfDirty(Facebook.Unity.Settings.FacebookSettings.Instance);
             Facebook.Unity.Editor.ManifestMod.GenerateManifest();
+        }
+
+        private static void CheckExeptions(NanoSauceSetupData data)
+        {
+            if (data.fbAppId == "")
+                throw new Exception("NanoSauce: No FB AppID specified...");
+            
+            if (data.fbAppId.Contains(" "))
+                throw new Exception("NanoSauce: Withespace detected at FB AppID...");
         }
     }
 }
