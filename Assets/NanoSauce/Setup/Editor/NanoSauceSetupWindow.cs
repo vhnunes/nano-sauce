@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace com.vhndev.nanosauce.setup.editor
 {
-    public class NanoSauceSettingsWindow : EditorWindow
+    public class NanoSauceSetupWindow : EditorWindow
     {
         [MenuItem("NanoSauce/Settings")]
         private static void ShowWindow()
         {
-            var window = GetWindow<NanoSauceSettingsWindow>();
+            var window = GetWindow<NanoSauceSetupWindow>();
             window.titleContent = new GUIContent("NanoSauce Settings");
             window.Show();
         }
