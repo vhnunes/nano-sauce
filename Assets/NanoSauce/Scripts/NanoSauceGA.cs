@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace com.vhndev.nanosauce
 {
-    internal class NanoSauceGameAnalytics : IGameAnalyticsATTListener 
+    internal class NanoSauceGA : IGameAnalyticsATTListener 
     {
         internal void Initialize()
         {

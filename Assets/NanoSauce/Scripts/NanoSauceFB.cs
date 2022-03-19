@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace com.vhndev.nanosauce
 {
-    internal class NanoSauceFacebook
+    internal class NanoSauceFB
     {
         internal void Initialize()
         {
