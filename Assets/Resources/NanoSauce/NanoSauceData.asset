@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd5dabdf9cf49e78e89a77d2194542e, type: 3}
+  m_Name: NanoSauceData
+  m_EditorClassIdentifier: 
+  fbAppId: 626762685266402
+  gaAndroidGameKey: 773cb1f729d1f068f865be6767a2207f
+  gaAndroidSecretKey: ca900dd569cee66618fd6ae1110f4a94478730e0
+  gaIosGameKey: 
+  gaIosSecretKey: 
