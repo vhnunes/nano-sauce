@@ -1,7 +1,7 @@
 ﻿using Facebook.Unity;
 using UnityEngine;
 
-namespace com.vhndev.nanosauce
+namespace com.vhndev.nanosauce.analytics
 {
     internal class NanoSauceFB
     {

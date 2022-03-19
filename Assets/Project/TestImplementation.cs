@@ -1,4 +1,4 @@
-using com.vhndev.nanosauce;
+using com.vhndev.nanosauce.analytics;
 using UnityEngine;
 
 namespace HyperFactory

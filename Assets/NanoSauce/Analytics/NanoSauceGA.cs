@@ -1,7 +1,7 @@
 ﻿using GameAnalyticsSDK;
 using UnityEngine;
 
-namespace com.vhndev.nanosauce
+namespace com.vhndev.nanosauce.analytics
 {
     internal class NanoSauceGA : IGameAnalyticsATTListener 
     {

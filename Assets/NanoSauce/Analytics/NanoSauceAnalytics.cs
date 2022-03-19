@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace com.vhndev.nanosauce
+namespace com.vhndev.nanosauce.analytics
 {
     public static class NanoSauceAnalytics
     {
