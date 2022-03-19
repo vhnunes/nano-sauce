@@ -1,5 +1,6 @@
 ﻿using System;
 using GameAnalyticsSDK;
+using UnityEditor.Build;
 using UnityEngine;
 
 namespace com.vhndev.nanosauce.setup.editor
@@ -20,12 +21,12 @@ namespace com.vhndev.nanosauce.setup.editor
             
             CheckExeptions(data);
         }
-        
+
         private static void CheckExeptions(NanoSauceSetupData data)
         {
             #if UNITY_ANDROID
             
-            if (data.gaAndroidGameKey == "" || data.gaAndroidSecretKey == "")
+            if (string.IsNullOrEmpty(data.gaAndroidGameKey) || string.IsNullOrEmpty(data.gaAndroidSecretKey))
                 throw new Exception("NanoSauce: No GA Android Game Key or Secret Key...");
             
             if (data.gaAndroidGameKey.Contains(" ") || data.gaAndroidSecretKey.Contains(" "))
@@ -42,7 +43,7 @@ namespace com.vhndev.nanosauce.setup.editor
             
             #if UNITY_IOS
             
-            if (data.gaIosGameKey == "" || data.gaIosSecretKey == "")
+            if (string.IsNullOrEmpty(data.gaIosGameKey) || string.IsNullOrEmpty(data.gaIosGameKey))
                 throw new Exception("NanoSauce: No GA iOS Game Key or Secret Key...");
             
             if (data.gaIosGameKey.Contains(" ") || data.gaIosSecretKey.Contains(" "))
@@ -54,6 +55,35 @@ namespace com.vhndev.nanosauce.setup.editor
             if (!GameAnalytics.SettingsGA.IsSecretKeyValid(1, data.gaIosGameKey))
                 throw new Exception("NanoSauce: Invalid GA iOS Secret Key...");
             
+            #endif
+        }
+
+        public static void CheckBuildExceptions()
+        {
+            var gaAndroidGameKey = GameAnalytics.SettingsGA.GetGameKey(0);
+            var gaAndroidSecretKey = GameAnalytics.SettingsGA.GetSecretKey(0);
+
+            var gaIosGameKey = GameAnalytics.SettingsGA.GetGameKey(1);
+            var gaIosSecretKey = GameAnalytics.SettingsGA.GetSecretKey(1);
+            
+            #if UNITY_ANDROID
+
+            if (string.IsNullOrEmpty(gaAndroidGameKey) || string.IsNullOrEmpty(gaAndroidSecretKey))
+                throw new BuildFailedException("NanoSauce: No GA Android Game Key or Secret Key...");
+            
+            if (gaAndroidGameKey.Contains(" ") || gaAndroidSecretKey.Contains(" "))
+                throw new BuildFailedException("NanoSauce: Whitespace detected at GA Android Game Key or Secret Key...");
+
+            #endif
+            
+            #if UNITY_IOS
+            
+            if (string.IsNullOrEmpty(gaIosGameKey) || string.IsNullOrEmpty(gaIosSecretKey))
+                throw new BuildFailedException("NanoSauce: No GA iOS Game Key or Secret Key...");
+            
+            if (gaIosGameKey.Contains(" ") || gaIosSecretKey.Contains(" "))
+                throw new BuildFailedException("NanoSauce: Whitespace detected at GA iOS Game Key or Secret Key...");
+
             #endif
         }
     }
