@@ -17,3 +17,6 @@ MonoBehaviour:
   gaAndroidSecretKey: ca900dd569cee66618fd6ae1110f4a94478730e0
   gaIosGameKey: 
   gaIosSecretKey: 
+  gaCustomDimensions:
+  - A
+  - B

@@ -18,6 +18,8 @@ namespace com.vhndev.nanosauce.setup.editor
             GameAnalytics.SettingsGA.AddPlatform(RuntimePlatform.IPhonePlayer);
             GameAnalytics.SettingsGA.UpdateGameKey(1, data.gaIosGameKey);
             GameAnalytics.SettingsGA.UpdateSecretKey(1, data.gaIosSecretKey);
+
+            GameAnalytics.SettingsGA.CustomDimensions01 = data.gaCustomDimensions;
             
             CheckExeptions(data);
         }

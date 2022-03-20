@@ -6,6 +6,7 @@ namespace com.vhndev.nanosauce.setup.editor
     public class NanoSauceSetupWindow : EditorWindow
     {
         private NanoSauceSetupData data = null;
+        private int cohortSize = 0;
         
         [MenuItem("NanoSauce/Settings")]
         private static void ShowWindow()
@@ -22,6 +23,9 @@ namespace com.vhndev.nanosauce.setup.editor
             GUILayout.Space(20);
             
             DrawGASettings();
+            GUILayout.Space(20);
+            
+            DrawABSettings();
             GUILayout.Space(20);
             
             DrawApplyButton();
@@ -42,6 +46,28 @@ namespace com.vhndev.nanosauce.setup.editor
             data.gaIosSecretKey = EditorGUILayout.TextField("iOS Secret Key",data.gaIosSecretKey);
         }
 
+        private void DrawABSettings()
+        {
+            EditorGUILayout.HelpBox("A/B Test", MessageType.None);
+            if (cohortSize == 0) EditorGUILayout.HelpBox("Create cohorts to enable A/B tests.", MessageType.None);
+            EditorGUILayout.HelpBox("You cannot have more than 20 cohorts.", MessageType.Warning);
+            
+            cohortSize = EditorGUILayout.IntField("Cohorts", cohortSize);
+            if (cohortSize > 20)
+                cohortSize = 20;
+            
+            if (data.gaCustomDimensions.Count > cohortSize)
+                data.gaCustomDimensions.RemoveRange(cohortSize, data.gaCustomDimensions.Count-cohortSize);
+            
+            for (int i = 0; i < cohortSize; i++)
+            {
+                if (data.gaCustomDimensions.Count <= i)
+                    data.gaCustomDimensions.Add("ID");
+                
+                data.gaCustomDimensions[i] = EditorGUILayout.TextField("Cohort ID",data.gaCustomDimensions[i]);
+            }
+        }
+
         private void DrawApplyButton()
         {
             if (GUILayout.Button("Apply"))
@@ -51,12 +77,12 @@ namespace com.vhndev.nanosauce.setup.editor
                 
                 NanoSauceSetup.ApplySetup();
             }
-                
         }
 
         private void SyncData()
         {
-            data = NanoSauceSetup.GetData;
+            data = NanoSauceSetupData.GetData;
+            cohortSize = data.gaCustomDimensions.Count;
         }
     }
 }

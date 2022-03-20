@@ -77,5 +77,18 @@ namespace com.vhndev.nanosauce.analytics
 
         #endregion
 
+        #region A/B Test
+
+        /// <summary>
+        /// Get the current ID of A/B Test cohort.
+        /// </summary>
+        /// <returns>Current ID of A/B Test cohort</returns>
+        public static string GetCurrentCohortID()
+        {
+            return nanoGA.GetCustomDimension;
+        }
+
+        #endregion
+
     }
 }
