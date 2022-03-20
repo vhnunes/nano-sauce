@@ -62,7 +62,7 @@ namespace com.vhndev.nanosauce.setup.editor
             for (int i = 0; i < cohortSize; i++)
             {
                 if (data.gaCustomDimensions.Count <= i)
-                    data.gaCustomDimensions.Add("ID");
+                    data.gaCustomDimensions.Add("New ID");
                 
                 data.gaCustomDimensions[i] = EditorGUILayout.TextField("Cohort ID",data.gaCustomDimensions[i]);
             }
