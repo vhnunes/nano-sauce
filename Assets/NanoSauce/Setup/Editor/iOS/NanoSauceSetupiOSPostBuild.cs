@@ -1,6 +1,7 @@
 using System.IO;
 using UnityEditor;
 using UnityEditor.Callbacks;
+using UnityEditor.iOS.Xcode;
 
 namespace com.vhndev.nanosauce.setup.editor.ios
 {
@@ -9,6 +10,8 @@ namespace com.vhndev.nanosauce.setup.editor.ios
         [PostProcessBuild]
         public static void FixCodePlist(BuildTarget buildTarget, string pathToBuiltProject)
         {
+            // Fix iOS14+ requirements for tracking with fb sdk.
+            
             if (buildTarget != BuildTarget.iOS) return;
             
             #if UNITY_IOS
@@ -18,10 +21,18 @@ namespace com.vhndev.nanosauce.setup.editor.ios
                 
             UnityEditor.iOS.Xcode.PlistElementDict rootDict = plist.root;
                 
-            var buildKey = "NSUserTrackingUsageDescription";
-            rootDict.CreateArray (buildKey).AddString (
-                "We need you data in order to improve our app in the next updates.");
-                
+            var trackingKey = "NSUserTrackingUsageDescription";
+            rootDict.CreateDict(trackingKey);
+            rootDict.SetString(trackingKey, "We need you data in order to improve our app in the next updates.");
+            
+            var fbMessengerShareKey = "LSApplicationQueriesSchemes";
+            rootDict.values.TryGetValue(fbMessengerShareKey, out var value);
+            if (value != null)
+            {
+                value.AsArray().AddString("fb-messenger-share-api");
+            }
+            
+
             File.WriteAllText(plistPath, plist.WriteToString());
             #endif
         }
@@ -29,6 +40,8 @@ namespace com.vhndev.nanosauce.setup.editor.ios
         [PostProcessBuild]
         public static void FixXcodeBitcode(BuildTarget buildTarget, string path)
         {
+            // Fix xcode (12.5) compile error using fb sdk 11+ 
+            
             if (buildTarget != BuildTarget.iOS) return;
             
             #if UNITY_IOS
