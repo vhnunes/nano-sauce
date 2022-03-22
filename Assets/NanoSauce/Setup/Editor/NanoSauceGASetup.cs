@@ -9,17 +9,19 @@ namespace com.vhndev.nanosauce.setup.editor
     {
         public static void ApplyFromData(NanoSauceSetupData data)
         {
-            GameAnalytics.SettingsGA.Platforms.Clear();
+            var settings = GameAnalytics.SettingsGA;
             
-            GameAnalytics.SettingsGA.AddPlatform(RuntimePlatform.Android);
-            GameAnalytics.SettingsGA.UpdateGameKey(0, data.gaAndroidGameKey);
-            GameAnalytics.SettingsGA.UpdateSecretKey(0, data.gaAndroidSecretKey);
+            settings.Platforms.Clear();
+            
+            settings.AddPlatform(RuntimePlatform.Android);
+            settings.UpdateGameKey(0, data.gaAndroidGameKey);
+            settings.UpdateSecretKey(0, data.gaAndroidSecretKey);
 
-            GameAnalytics.SettingsGA.AddPlatform(RuntimePlatform.IPhonePlayer);
-            GameAnalytics.SettingsGA.UpdateGameKey(1, data.gaIosGameKey);
-            GameAnalytics.SettingsGA.UpdateSecretKey(1, data.gaIosSecretKey);
+            settings.AddPlatform(RuntimePlatform.IPhonePlayer);
+            settings.UpdateGameKey(1, data.gaIosGameKey);
+            settings.UpdateSecretKey(1, data.gaIosSecretKey);
 
-            GameAnalytics.SettingsGA.CustomDimensions01 = data.gaCustomDimensions;
+            settings.CustomDimensions01 = data.gaCustomDimensions;
             
             CheckExeptions(data);
         }
