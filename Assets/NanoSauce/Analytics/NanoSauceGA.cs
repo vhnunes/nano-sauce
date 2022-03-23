@@ -83,6 +83,12 @@ namespace com.vhndev.nanosauce.analytics
 
         private void LoadLastCustomDimension()
         {
+            #if UNITY_EDITOR
+            
+            return; // Don`t want editor to load last session dimension value.
+            
+            #endif
+            
             if (PlayerPrefs.HasKey(CUSTOM_DIMENSION_SAVE_KEY))
                 currentCustomDimension = PlayerPrefs.GetString(CUSTOM_DIMENSION_SAVE_KEY);
         }
