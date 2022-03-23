@@ -19,6 +19,12 @@ namespace com.vhndev.nanosauce.setup.editor
 
         private void OnGUI()
         {
+            if (HasSyncProblem())
+            {
+                SyncData();
+                return;
+            }
+            
             DrawFBSettings();
             GUILayout.Space(20);
             
@@ -83,6 +89,11 @@ namespace com.vhndev.nanosauce.setup.editor
         {
             data = NanoSauceSetupData.GetData;
             cohortSize = data.gaCustomDimensions.Count;
+        }
+        
+        private bool HasSyncProblem()
+        {
+            return data == null;
         }
     }
 }
