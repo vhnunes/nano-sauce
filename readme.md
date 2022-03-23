@@ -29,7 +29,7 @@ The nano sauce has inside himself some 3rd party sdk`s and plugins, you cannot h
 
 ### Installation
 1. Install the nano-sauce .unitypackage into your unity project.
-2. After installation the **External Dependency Manager** should ask to enable Auto Resolution to resolve his libraries, accept and wait.
+2. After installation the **External Dependency Manager** should ask to enable Auto Resolution to resolve his libraries (or will start to auto resolve), accept and wait.
 
 ### FB and GA Setup
 Go to **NanoSauce > Settings** in the Unity top menu.
