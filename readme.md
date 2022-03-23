@@ -3,7 +3,7 @@
 
 ## Supported Platforms
 Should work on devices using Android 5.1+ or iOS 14.5- <br>
-Not tested on **iOS 14.5+** devices or using **Xcode 13**. I was limited to build on Xcode 12.5 up to iOS 14.5.
+Not tested on **iOS 14.5+** devices or using **Xcode 13**. I was limited to build on Xcode 12.5 up to iOS 14.5 (simulator).
 
 ## Requirements
 **Unity**<br>
@@ -48,6 +48,9 @@ You don`t need to initialize anything, just call the desired methods in your gam
 
 ### Level Progression
 You can track the progression of the player using some provided methods.
+
+          using com.vhndev.nanosauce.analytics;
+
 - Call **NanoSauceAnalytics.RegisterGameStart()** when the level start.
 - Call **NanoSauceAnalytics.RegisterGameLose()** when the level is lost.
 - Call **NanoSauceAnalytics.RegisterGameWin()** when the level is won.
@@ -60,6 +63,9 @@ You should pass an **string** as argument and an **float** as optional event val
 Nano-sauce A/B tests works using **GameAnalytics** custom dimension. <br>
 You can make A/B tests using **cohorts** (see setup on top). Call **NanoSauceAnalytics.GetCurrentCohortID()** and you will be returned with the sorted cohort.
         
+          using com.vhndev.nanosauce.analytics;
+          ...
+
           string cohortID = NanoSauceAnalytics.GetCurrentCohortID();
 
           if (cohortID == "A")
@@ -69,6 +75,9 @@ You can make A/B tests using **cohorts** (see setup on top). Call **NanoSauceAna
             Player.StartStrong();
 
 In **GameAnalytics** you can visualize the **cohort** of each player by his **custom_01** tracked by default on any event. It`s possible to use the **Dimensions > Custom 1** filter to visualize in a graph and compare data.
+
+### Sample
+You can found an complete sample implementation at folder **NanoSauce/Sample** that includes a scene and code.
 
 ## Building
 
