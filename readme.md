@@ -8,14 +8,16 @@ Not tested on **iOS 14.5+** devices or using **Xcode 13**. I was limited to buil
 ## Requirements
 **Unity**<br>
 Unity 2020.3 (recommended)<br>
-Unity 2019.4+
+Unity 2019.4+<br>
+~~Unity 2018.4 (not tested)~~
 
 **iOS Build**
 1. Xcode 12.5 (recommended)
 2. Cocoapods
 
 **Android Build**
-1. Unity with a working Android build support. (see unity versions on requirements)
+1. For Unity 2020.3+ there is no requirements other than Android Build support properly configured.
+2. For version **below** 2020.3 you will need to export the project and build using **Android Studio**.
 
 ## Before Install
 The nano sauce has inside himself some 3rd party sdk`s and plugins, you cannot have them on your current project. If you have any of them, please remove from you project.
@@ -73,9 +75,9 @@ In **GameAnalytics** you can visualize the **cohort** of each player by his **cu
 ### Android
 Before you start an Android Build make sure to Resolve the Android External Dependency Manager, you can do that by going into unity top menu **Assets > External Dependency Manager > Android > Android Resolver > Resolve**
 
+In **Unity 2020.3+** you just need to build using Unity. For **versions below** you need to **Export Project** open it on **Android Studio** update the **gradle plugin when asked** and build here.<br>
+~~Thanks **Facebook SDK 11**~~
+
 ### iOS
 After the xcode project has been build up, **don`t open the .xcproject  extension file**, use the **.xcworkspace** extension file to open the **Xcode Project**.<br>
 If **.xcworkspace** file does not exist, try running the terminal command ``pod install`` in the project folder.
-
-## Know Issues
-On MAC when applying **nano sauce settings** for the first time sometimes generate error`s related to **GameAnalyitcs** when they create his settings files. This can be solved by reopening the unity or deleting **Resources/GameAnalyitcs folder** and opening **Game Analytics** setup menu on **Window > Game Analytics > Select Settings** and click on **I want to fill my game keys manual**.
