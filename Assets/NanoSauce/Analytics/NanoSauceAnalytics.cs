@@ -49,6 +49,16 @@ namespace com.vhndev.nanosauce.analytics
             nanoGA.RegisterLevelLose(GetCurrentLevelString());
         }
 
+        /// <summary>
+        /// Call to register a custom event. Can be useful for track goals inside the game or anything else.
+        /// </summary>
+        /// <param name="eventString">Event String</param>
+        /// <param name="eventFloatValue">Event Value, optional</param>
+        public static void RegisterCustomEvent(string eventString, float eventFloatValue)
+        {
+            nanoGA.RegisterDesignEvent(eventString, eventFloatValue);
+        }
+
         #endregion
 
         #region Level Progress Automation

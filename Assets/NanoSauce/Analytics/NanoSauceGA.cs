@@ -67,6 +67,15 @@ namespace com.vhndev.nanosauce.analytics
         {
             GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, levelString);
         }
+        
+        internal void RegisterDesignEvent(string eventString, float eventFloatValue = float.NaN)
+        {
+            if (float.IsNaN(eventFloatValue))
+                GameAnalytics.NewDesignEvent(eventString);
+            
+            else
+                GameAnalytics.NewDesignEvent(eventString, eventFloatValue);
+        }
 
         #endregion
 
