@@ -2,7 +2,7 @@
 ### A simple Facebook and Game Analytics integration.
 
 ## Supported Platforms
-Should work on devices using Android 5.1+ or iOS 14.5-. <br>
+Should work on devices using Android 5.1+ or iOS 14.5- <br>
 Not tested on **iOS 14.5+** devices or using **Xcode 13**. I was limited to build on Xcode 12.5 up to iOS 14.5.
 
 ## Requirements
