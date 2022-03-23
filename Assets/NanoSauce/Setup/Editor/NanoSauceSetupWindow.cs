@@ -79,8 +79,6 @@ namespace com.vhndev.nanosauce.setup.editor
             if (GUILayout.Button("Apply"))
             {
                 EditorUtility.SetDirty(data);
-                AssetDatabase.SaveAssetIfDirty(data);
-                
                 NanoSauceSetup.ApplySetup();
             }
         }
