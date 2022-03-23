@@ -826,7 +826,7 @@ namespace GameAnalyticsSDK.Editor
                             string beforeGameKey = ga.GetGameKey(i);
                             string tmpGameKey = EditorGUILayout.TextField("", ga.GetGameKey(i));
 
-                            if (!tmpGameKey.Equals(beforeGameKey))
+                            if (!tmpGameKey.Equals(beforeGameKey) && beforeGameKey != null)
                             {
                                 ga.SelectedPlatformOrganization[i] = "";
                                 ga.SelectedPlatformStudio[i] = "";
@@ -843,7 +843,7 @@ namespace GameAnalyticsSDK.Editor
                             string beforeSecretKey = ga.GetSecretKey(i);
                             string tmpSecretKey = EditorGUILayout.TextField("", ga.GetSecretKey(i));
 
-                            if (!tmpSecretKey.Equals(beforeSecretKey))
+                            if (!tmpSecretKey.Equals(beforeSecretKey) && beforeSecretKey != null)
                             {
                                 ga.SelectedPlatformOrganization[i] = "";
                                 ga.SelectedPlatformStudio[i] = "";
