@@ -18,7 +18,6 @@ namespace com.vhndev.nanosauce.setup.editor
             };
             
             EditorUtility.SetDirty(Facebook.Unity.Settings.FacebookSettings.Instance);
-            AssetDatabase.SaveAssetIfDirty(Facebook.Unity.Settings.FacebookSettings.Instance);
             Facebook.Unity.Editor.ManifestMod.GenerateManifest();
         }
 
@@ -31,7 +30,7 @@ namespace com.vhndev.nanosauce.setup.editor
                 throw new Exception("NanoSauce: Withespace detected at FB AppID...");
         }
 
-        public static void CheckBuildExceptions()
+        internal static void CheckBuildExceptions()
         {
             var data = NanoSauceSetupData.GetData;
             

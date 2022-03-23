@@ -62,7 +62,7 @@ namespace com.vhndev.nanosauce.setup.editor
             #endif
         }
 
-        public static void CheckBuildExceptions()
+        internal static void CheckBuildExceptions()
         {
             var gaAndroidGameKey = GameAnalytics.SettingsGA.GetGameKey(0);
             var gaAndroidSecretKey = GameAnalytics.SettingsGA.GetSecretKey(0);
