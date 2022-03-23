@@ -53,7 +53,7 @@ You can track the progression of the player using some provided methods.
 - Call **NanoSauceAnalytics.RegisterGameWin()** when the level is won.
 
 ### Custom Event
-Track a custom event anywhere in your game by calling **NanoSauceAnalytics.RegisterCustomEvent()**. Can be useful for track goals inside the game or anything else.<br>
+Track a custom event anywhere in your game by calling **NanoSauceAnalytics.RegisterCustomEvent()**. Can be useful for tracking goals inside the game or anything else.<br>
 You should pass an **string** as argument and an **float** as optional event value.
 
 ### A/B Test
