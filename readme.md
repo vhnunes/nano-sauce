@@ -21,8 +21,8 @@ Unity 2019.4+<br>
 
 ## Before Install
 The nano sauce has inside himself some 3rd party sdk`s and plugins, you cannot have them on your current project. If you have any of them, please remove from you project.
-1. Facebook SDK
-2. GameAnalytics SDK
+1. Facebook SDK 11.0
+2. GameAnalytics SDK 7.3.23
 3. ExternalDependencyManager
 
 ## Install and ID Setup
