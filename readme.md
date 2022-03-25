@@ -12,7 +12,7 @@ Unity 2019.4+<br>
 ~~Unity 2018.4 (not tested)~~
 
 **iOS Build**
-1. Xcode 12.5 (recommended)
+1. Xcode 12.5+ (recommended)
 2. Cocoapods
 
 **Android Build**
