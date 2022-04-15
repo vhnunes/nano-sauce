@@ -1,4 +1,4 @@
-﻿# nano-sauce - Unity Facebook + Game Analytics implementation.
+﻿# nano-sauce
 ### A simple Facebook and Game Analytics integration for Unity on Android and iOS.
 
 ## Supported Platforms
