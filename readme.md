@@ -1,5 +1,5 @@
 ﻿# nano-sauce
-### A simple Facebook and Game Analytics integration for Unity on Android and iOS.
+A simple Facebook and Game Analytics integration for Unity on Android and iOS.
 
 ## Supported Platforms
 Should work on devices using Android 5.1+ or iOS 14.5- <br>
